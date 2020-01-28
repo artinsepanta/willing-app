@@ -1,0 +1,25 @@
+body {
+  text-align: center;
+}
+
+h2 {
+  font-size: 4em;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.school-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.school-siteAddress {
+  
+  border: 1px solid black;
+}
+
+
