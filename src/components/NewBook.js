@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class NewSchool extends Component {
+export default class NewBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      school: "",
-      siteAddress: "",
+      book: "",
+      image: "",
       error: ""
     };
     this.handleChange = this.handleChange.bind(this);
@@ -21,16 +21,16 @@ export default class NewSchool extends Component {
       <form
         onSubmit={e => {
           e.preventDefault();
-          if (!this.state.siteAddress) {
-            this.setState({ error: "Please insert a siteAddress" });
+          if (!this.state.image) {
+            this.setState({ error: "Please insert a image" });
           } else {
             axios
-              .post("/api/schools", {
-                name: this.state.school,
-                siteAddress: this.state.siteAddress
+              .post("/api/books", {
+                name: this.state.book,
+                image: this.state.image
               })
               .then(response => {
-                this.props.changeView("schools");
+                this.props.changeView("books");
               })
               .catch(error => {
                 console.log(error);
@@ -42,16 +42,16 @@ export default class NewSchool extends Component {
         }}
       >
         <input
-          name="school"
-          placeholder="school"
+          name="book"
+          placeholder="book"
           onChange={this.handleChange}
-          value={this.state.school}
+          value={this.state.book}
         />
         <input
-          name="siteAddress"
-          placeholder="siteAddress"
+          name="image"
+          placeholder="Image"
           onChange={this.handleChange}
-          value={this.state.siteAddress}
+          value={this.state.image}
         />
         <button type="reset">Cancel</button>
         <button type="submit">Submit</button>

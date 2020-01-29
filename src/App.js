@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
-import SchoolList from "./components/SchoolList";
-import NewSchool from "./components/NewSchool";
-
+import BookList from "./components/BookList";
+import NewBook from "./components/NewBook";
+import './index.css';
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: "schools"
+      view: "books"
     };
     this.changeView = this.changeView.bind(this);
   }
@@ -23,10 +23,10 @@ class App extends Component {
         <nav>
           <button
             onClick={() => {
-              this.setState({ view: "schools" });
+              this.setState({ view: "books" });
             }}
           >
-            school
+            Book
           </button>
           <button
             onClick={() => {
@@ -37,8 +37,8 @@ class App extends Component {
           </button>
           <button>memories</button>
         </nav>
-        {this.state.view === "schools" ? <SchoolList /> : null}
-        {this.state.view === "new" && <NewSchool changeView={this.changeView} />}
+        {this.state.view === "books" ? <BookList /> : null}
+        {this.state.view === "new" && <NewBook changeView={this.changeView} />}
       </div>
     );
   }

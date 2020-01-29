@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class SchoolItem extends Component {
+export default class BookItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,18 +15,18 @@ export default class SchoolItem extends Component {
 
   handleClick = () => {
     axios
-      .put("/api/schools/" + this.props.name, { name: this.state.newName })
+      .put("/api/books/" + this.props.name, { name: this.state.newName })
       .then(response => {
-        this.props.updateschools(response.data);
+        this.props.updatebooks(response.data);
       });
   };
 
   render() {
     return (
-      <li className="school-item">
+      <li className="book-item">
         <img
-          className="school-siteAddress"
-          src={this.props.siteAddress}
+          className="book-image"
+          src={this.props.image}
           alt={this.props.name}
         />
         <h3>{this.props.name}</h3>

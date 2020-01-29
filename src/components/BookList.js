@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import axios from "axios";
-import SchoolItem from "./SchoolItem";
+import BookItem from "./BookItem";
 
-export default class SchoolList extends Component {
+export default class BookList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      schools: [],
+      books: [],
       error: ""
     };
   }
 
   componentDidMount() {
     axios
-      .get("/api/schools")
+      .get("/api/books")
       .then(response => {
-        this.setState({ schools: response.data });
+        this.setState({ books: response.data });
       })
       .catch(error => {
         console.log(error);
@@ -25,20 +25,20 @@ export default class SchoolList extends Component {
       });
   }
 
-  updateSchools = newSchools => {
-    this.setState({ schools: newSchools});
+  updateBooks = newBooks => {
+    this.setState({ books: newBooks});
   };
 
   render() {
     return (
       <>
         <ul>
-          {this.state.schools.map(school => (
-            <SchoolItem
-              updateSchools={this.updateSchools}
-              name={school.name}
-          siteAddress={school.siteAddress}
-              key={school.name}
+          {this.state.books.map(book => (
+            <BookItem
+              updateBooks={this.updateBooks}
+              name={book.name}
+              image={book.image}
+              key={book.name}
             />
           ))}
         </ul>
